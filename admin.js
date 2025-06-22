@@ -7,12 +7,12 @@ import {
 const db = getFirestore();
 
 auth.onAuthStateChanged(async (user) => {
-  if (!user) return location.href = "auth.html";
+  if (!user) return location.href = "https://search-up.f5.si/auth.html";
   const snap = await getDoc(doc(db, "users", user.uid));
   const data = snap.exists() ? snap.data() : {};
   if (!data.isAdmin) {
     alert("管理者専用ページです");
-    location.href = "index.html";
+    location.href = "https://search-up.f5.si/index.html";
   } else {
     loadReports();
     loadAds();
